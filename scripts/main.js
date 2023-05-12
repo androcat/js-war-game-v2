@@ -50,20 +50,41 @@
     return this.cards;
   };
 
-  const testDeck = new Deck();
-
-  console.log(testDeck.buildDeck(cardValues, cardSuites));
-
   // Using sort
   Deck.prototype.shuffle = function (arr) {
     return arr.sort(() => Math.random() - 0.5);
   };
+  //   const copyShuffledCards = testDeck.shuffle(testDeck.cards);
+  //   console.log("Copy of shuffled deck", copyShuffledCards);
+  //   console.log("Test deck", testDeck);
 
-  console.log(testDeck.shuffle(testDeck.cards));
-  console.log(testDeck);
-
-  function Player({ cards = [] } = {}) {
-    this.cards = cards;
+  // change from Deck obj to [] because we only want half of the array of cards deck has after it has been shuffled
+  function Player({ deck = [] } = {}) {
+    this.deck = deck;
   }
-  function Game() {}
+  // Successfully pulls top card
+  Player.prototype.pullCard = function (pulledCardArr) {
+    pulledCardArr.push(this.deck.cards.shift());
+    return pulledCardArr[0];
+  };
+
+  function Game() {
+    let pulledCards = [];
+
+    const gameDeck = new Deck();
+    gameDeck.buildDeck(cardValues, cardSuites);
+    // console.log("Build Deck:", testDeck);
+
+    // How to give player only half of the deck?
+    const CPU = new Player({
+      deck: gameDeck.cards.slice(0, gameDeck.cards.length / 2),
+    }); //our already shuffled deck
+    // console.log(testPlayer);
+    // console.log(CPU.deck); // works
+
+    // console.log("should return a Card", testPlayer.pullCard(pulledCards));
+    // console.log("Should return an array with 1 card", pulledCards);
+  }
+
+  const testGame = Game();
 })();
