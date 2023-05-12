@@ -50,23 +50,17 @@
     return this.cards;
   };
 
-  //   const testCard = new Card();
   const testDeck = new Deck();
 
   console.log(testDeck.buildDeck(cardValues, cardSuites));
 
   // Using sort
   Deck.prototype.shuffle = function (arr) {
-    arr.deckOfCards = arr.sort(() => Math.random() - 0.5);
+    return arr.sort(() => Math.random() - 0.5);
   };
 
-  //   let testCard = new Card();
-  //   const deckArr = testCard.buildDeck(cardValues, cardSuites);
-  //   console.table(deckArr);
-
-  //   let testDeck = new Deck(deckArr);
-  //   let testShuffleDeck = testDeck.shuffle(testDeck.deckOfCards);
-  //   console.log(testShuffleDeck);
+  console.log(testDeck.shuffle(testDeck.cards));
+  console.log(testDeck);
 
   function Player({ cards = [] } = {}) {
     this.cards = cards;
