@@ -1,18 +1,38 @@
 body {
   font-size: 5vh;
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  text-align: center;
+  background-color: brown;
 }
 
 main {
-  background-image: url("https://images.unsplash.com/photo-1483119107169-31558642c29c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80");
+  background: url("https://images.unsplash.com/photo-1483119107169-31558642c29c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80")
+    no-repeat center center fixed;
   background-size: cover;
   width: 100%;
   height: 90vh;
   margin: auto;
+
   display: flex;
   flex-direction: row;
   align-items: space-between;
+
+  /* position: relative; */
 }
+
+.display {
+  margin: auto;
+
+  /* top: 25%; */
+}
+/*
+.player1-display {
+  left: 20%;
+}
+
+.player2-display {
+  right: 20%;
+} */
 
 .card {
   padding: 24vh auto;
@@ -26,16 +46,30 @@ main {
 
   background-color: white;
 
-  /* align text in center of card */
   text-align: center;
   /* vertical-align: middle; */
-  /* line-height: 48vh; */
+  /* line-height: 15vh; */
+
+  position: relative;
 }
 
-#computer-card-display {
+p {
+  line-height: normal;
+}
+
+.hand {
+  width: 100%;
+  height: 20%;
+
+  position: absolute;
+  left: 0;
+  bottom: 10%;
+}
+
+#computer-card {
   border-color: blue;
 }
 
-#player-card-display {
+#player-card {
   border-color: red;
 }
