@@ -8,18 +8,27 @@
     <link rel="stylesheet" href="styles/style.css" />
   </head>
   <body>
-    <main>
-      <div class="card" id="computer-card-display" value="2 hearts">
-        <p id="computer-card-text">2 of hearts</p>
-        <div class="hand" id="computer-hand-display" value="26">
-          Cards in hand: 26
+    <header>
+      <h1>A Game of War</h1>
+    </header>
+    <main class="container">
+      <div class="display player1-display">
+        <h2>CPU</h2>
+        <div class="card" id="computer-card" value="2 hearts">
+          <p id="computer-card-text">2 of hearts</p>
+          <div class="hand" id="computer-hand" value="26">
+            Cards in hand: 26
+          </div>
         </div>
       </div>
-      <div class="card" id="player-card-display" value="king diamonds">
-        <p id="player-card-text">King of diamonds</p>
-        <div class="hand" id="player-hand-display" value="26">
-          Cards in hand: 26
+
+      <div class="display player2-display">
+        <h2>You</h2>
+        <div class="card" id="player-card" value="king diamonds">
+          <p id="player-card-text">King of diamonds</p>
+          <div class="hand" id="player-hand" value="26">Cards in hand: 26</div>
         </div>
+        <button id="pull-card-btn" type="button">Pull Card</button>
       </div>
     </main>
     <script src="scripts/main.js"></script>
