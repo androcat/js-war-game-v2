@@ -5,6 +5,22 @@ body {
   background-color: brown;
 }
 
+header {
+  height: 10vh;
+}
+
+h1 {
+  margin: 10px;
+}
+
+.underline {
+  border-style: solid;
+  border-width: 10px;
+  width: 100vw;
+  height: 10px;
+  margin: auto;
+}
+
 main {
   background: url("https://images.unsplash.com/photo-1483119107169-31558642c29c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80")
     no-repeat center center fixed;
@@ -15,7 +31,7 @@ main {
 
   display: flex;
   flex-direction: row;
-  align-items: space-between;
+  align-items: start;
 
   /* position: relative; */
 }
