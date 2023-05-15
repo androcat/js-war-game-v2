@@ -110,7 +110,7 @@
 
   Game.prototype.findWinner = function (player1, player2) {
     let winner = false;
-    if ((player1.hand = [])) {
+    if (player1.hand.length === 0) {
       winner = player2;
       alert("You win !");
     } else {
