@@ -71,14 +71,11 @@
   // Successfully pulls top card
   /// put on game instead bc it will be keeping track of the cards vvv
   Player.prototype.pullCard = function (pulledCardArr) {
-    console.log(pulledCardArr);
-    console.log(this.hand);
+    // console.log(pulledCardArr);
+    // console.log(this.hand); // works as expected, can delete
 
-    // the problem child according to the console: TypeError - undefined
-    // it was because i was trying to drill down to the deck's card array when what we need is inside of Player's deck
     pulledCardArr.push(this.hand.shift()); // or unshift() ...
 
-    console.log(pulledCardArr);
     return pulledCardArr[pulledCardArr.length - 1]; // and [0]
   };
 
@@ -98,34 +95,62 @@
     }
   };
 
-  let pulledCards = [];
+  Game.prototype.isMatch = function (card1, card2) {
+    while (card1.value === card2.value) {
+      console.log("is firing");
+      for (let i = 0; i < 3; i++) {
+        setTimeout(this.player1.pullCard, 3000);
+        setTimeout(this.player2.pullCard, 3000);
+      }
+      if (card1.value !== card2.value) {
+        break;
+      }
+    }
+  };
 
-  //gameDeck.shuffle(); //works
+  Game.prototype.findWinner = function (player1, player2) {
+    let winner = false;
+    if ((player1.hand = [])) {
+      winner = player2;
+      alert("You win !");
+    } else {
+      winner = player1;
+      alert("CPU wins");
+    }
+    return winner;
+  };
+
+  let pulledCards = [];
 
   const testGame = new Game(); // creates a game with 2 players who have empty hands- let's fix that !
   //   console.log(testGame.player1, testGame.player2);
+  testGame.deck.shuffle(); //UNCOMMENT IN LOGIC
   testGame.deal();
   console.log(testGame.player1, testGame.player2);
 
-  // How to give player only half of the deck?
-  //   const CPU = new Player({
-  //     hand: gameDeck.cards.slice(0, gameDeck.cards.length / 2),
-  //   }); //our already shuffled deck
-  //   const player = new Player({
-  //     hand: gameDeck.cards.slice(gameDeck.cards.length / 2),
-  //   });
-
-  //   console.log(player.hand);
-
-  //   console.table(CPU); // works, gives back half of a shuffled deck
-  //   console.table(player);
-
+  // THE REAL MAIN.JS CONTENT:
+  // Sets up players and foundation for choosing players in future iterations of the game
+  const CPU = testGame.player1;
+  const player = testGame.player2;
   // While neither player has 0 cards, keep playing
-  //while (CPU.deck.length > 0 && player.deck.length > 0) {
+  while (CPU.hand.length > 0 || player.hand.length > 0) {
+    let cardCPU = CPU.pullCard(pulledCards);
+    let cardPlayer = player.pullCard(pulledCards);
 
-  //   let cardCPU = CPU.pullCard(pulledCards);
-  //   let cardPlayer = player.pullCard(pulledCards);
-  //   //}
+    console.table("CPU pulled", cardCPU);
+    console.table("Player pulled", cardPlayer);
+
+    console.table("CPU hand", CPU.hand);
+    console.table("Player hand", player.hand);
+
+    testGame.isMatch(cardCPU, cardPlayer);
+
+    if (testGame.findWinner(CPU, player)) {
+      console.log("this fires");
+      break;
+    }
+  }
+
   //   console.log("CPU pulled", cardCPU);
   //   console.log("Player pulled", cardPlayer);
 
