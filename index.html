@@ -15,19 +15,22 @@
     <main class="container">
       <div class="display player1-display">
         <h2>CPU</h2>
-        <div class="card" id="computer-card" value="2 hearts">
-          <p id="computer-card-text">2 of hearts</p>
-          <div class="hand" id="computer-hand" value="26">
-            Cards in hand: 26
+        <div class="card" id="computer-card" value="2 of hearts">
+          <p id="computer-card-text">2 ♥</p>
+          <div class="hand" value="26">
+            Cards in hand: <span id="computer-hand">26</span>
           </div>
         </div>
+        <button id="shuffle-btn" type="button">Shuffle both hands</button>
       </div>
 
       <div class="display player2-display">
         <h2>You</h2>
-        <div class="card" id="player-card" value="king diamonds">
-          <p id="player-card-text">King of diamonds</p>
-          <div class="hand" id="player-hand" value="26">Cards in hand: 26</div>
+        <div class="card" id="player-card" value="king of diamonds">
+          <p id="player-card-text">King ♦</p>
+          <div class="hand" value="26">
+            Cards in hand: <span id="player-hand">26</span>
+          </div>
         </div>
         <button id="pull-card-btn" type="button">Pull Card</button>
       </div>
