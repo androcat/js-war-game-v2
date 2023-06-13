@@ -8,7 +8,7 @@
   const playerCardHand = document.getElementById("player-hand");
 
   const pullCardBtn = document.getElementById("pull-card-btn");
-
+  const shuffleBtn = document.getElementById("shuffle-btn");
   // Array of card values and suites
   const cardValues = [
     "2",
@@ -149,8 +149,16 @@
 
     if (this.player1.hand.length === 0) {
       alert("You win !");
+      playerCardText.innerText = "Winner!";
+      cpuCardText.innerText = "Loser :^(";
+      cpuCardHand.innerText = "0";
+      playerCardHand.innerText = "52";
     } else if (this.player2.hand.length === 0) {
       alert("CPU wins!");
+      playerCardText.innerText = "Loser :^(";
+      cpuCardText.innerText = "Winner!";
+      cpuCardHand.innerText = "52";
+      playerCardHand.innerText = "0";
     }
     cpuCardHand.innerText = this.player1.hand.length;
     playerCardHand.innerText = this.player2.hand.length;
@@ -163,6 +171,9 @@
     testGame.isMatch(cardCPU, cardPlayer);
   };
 
+  alert(
+    "Welcome to a game of War! Some things to note: Every time war happens, the hands will automatically shuffle. If the drawn pile is going back and forth too much, you can hit the 'Shuffle both Hands' button anytime you'd like."
+  );
   let pulledCards = [];
 
   const testGame = new Game();
@@ -173,11 +184,19 @@
   const CPU = testGame.player1;
   const player = testGame.player2;
 
-  let i = 50;
+  cpuCardText.innerText = CPU.hand[0].print();
+  playerCardText.innerText = player.hand[0].print();
+  // let i = 50;
   // while (CPU.hand.length > 0 && player.hand.length > 0 && i) {
   //   testGame.draw();
   //   i--;
   // }
 
   pullCardBtn.addEventListener("click", () => testGame.draw());
+  shuffleBtn.addEventListener("click", () => {
+    CPU.shuffle();
+    player.shuffle();
+    cpuCardText.innerText = CPU.hand[0].print();
+    playerCardText.innerText = player.hand[0].print();
+  });
 })();
